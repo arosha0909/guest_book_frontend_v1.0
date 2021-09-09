@@ -1,30 +1,40 @@
 <div class="global-container">
 	<div class="card login-form">
 	<div class="card-body">
-		<h3 class="card-title text-center">Become Our Awesome Guest</h3>
+		<h3 class="card-title text-center">Write your Idea as a Guest</h3>
 		<div class="card-text">
-			<form>
+			<form [formGroup]="registrationForm" novalidate>
                 <div class="form-group">
 					<label for="fnameInput">First Name</label>
-					<input type="text" class="form-control form-control-sm" id="exampleInputfName" aria-describedby="emailHelp">
+					<input type="text" class="form-control form-control-sm" id="exampleInputfName" aria-describedby="FNameHelp" formControlName="fname">
+					<span class="error-msg" *ngIf="registrationForm.get('fname').hasError('required') && hasError">First Name is required!</span>
 				</div>
                 <div class="form-group">
 					<label for="exampleInputlName">Last Name</label>
-					<input type="test" class="form-control form-control-sm" id="exampleInputlname" aria-describedby="emailHelp">
+					<input type="test" class="form-control form-control-sm" id="exampleInputlname" aria-describedby="LNameHelp" formControlName="lname">
+					<span class="error-msg" *ngIf="registrationForm.get('lname').hasError('required')  && hasError">Last Name is required!</span>
 				</div>
 				<div class="form-group">
 					<label for="exampleInputEmail1">Email address</label>
-					<input type="email" class="form-control form-control-sm" id="exampleInputEmail1" aria-describedby="emailHelp">
+					<input type="email" class="form-control form-control-sm" id="exampleInputEmail1" aria-describedby="emailHelp" formControlName="email">
+					<span class="error-msg" *ngIf="registrationForm.get('email').hasError('required')  && hasError">Email is required!</span>
 				</div>
 				<div class="form-group">
 					<label for="exampleInputPassword1">Password</label>
-					<a href="#" style="float:right;font-size:12px;">Forgot password?</a>
-					<input type="password" class="form-control form-control-sm" id="exampleInputPassword1">
+					<input type="password" class="form-control form-control-sm" id="exampleInputPassword1" formControlName="password">
+					<span class="error-msg" *ngIf="registrationForm.get('password').hasError('required')  && hasError">Password is required!</span>
 				</div>
-				<button type="submit" class="btn btn-create-account btn-block">Creat Account</button>
+
+				<!-- <div class="form-group">
+					<label for="exampleInputPassword2">Re-Password</label>
+					<input type="password" class="form-control form-control-sm" id="exampleInputPassword1" formControlName="repassword">
+					<span class="error-msg" *ngIf="registrationForm.get('repassword').hasError('required')  && hasError">Confirm Password is required!</span>
+				</div> -->
+
+				<button type="submit" class="btn btn-create-account btn-block" (click)="userRegister()">Creat Account</button>
 				
 				<div class="sign-up">
-					Do you already guest ? <a href="#">Sign In</a>
+					Do you already guest ? <a [routerLink]="login">Sign In</a>
 				</div>
 			</form>
 		</div>

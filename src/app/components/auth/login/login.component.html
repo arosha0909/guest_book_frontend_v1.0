@@ -3,20 +3,20 @@
 	<div class="card-body">
 		<h3 class="card-title text-center">Log in to Guest Book</h3>
 		<div class="card-text">
-			<form>
+			<form name="loginForm" [formGroup]="loginForm" novalidate>
 				<div class="form-group">
 					<label for="exampleInputEmail1">Email address</label>
-					<input type="email" class="form-control form-control-sm" id="exampleInputEmail1" aria-describedby="emailHelp">
+					<input type="email" class="form-control form-control-sm"  formControlName="email" id="exampleInputEmail1" aria-describedby="emailHelp">
 				</div>
 				<div class="form-group">
-					<label for="exampleInputPassword1">Password</label>
-					<a href="#" style="float:right;font-size:12px;">Forgot password?</a>
-					<input type="password" class="form-control form-control-sm" id="exampleInputPassword1">
+					<label for="exampleInputPassword1" >Password</label>
+					<!-- <a href="#" style="float:right;font-size:12px;">Forgot password?</a> -->
+					<input type="password" class="form-control form-control-sm" formControlName="password" id="exampleInputPassword1">
 				</div>
-				<button type="submit" class="btn btn-create-account btn-block">Sign In</button>
+				<button type="submit" class="btn btn-create-account btn-block" (click)="userLogin()">Sign In</button>
 				
 				<div class="sign-up">
-					Don't have an account? <a href="#">Create One</a>
+					Don't have an account? <a [routerLink]="'/create-account'">Create One</a>
 				</div>
 			</form>
 		</div>

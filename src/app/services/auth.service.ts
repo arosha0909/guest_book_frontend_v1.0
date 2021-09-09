@@ -67,7 +67,7 @@ export class AuthService {
 }
 
 // not important for guest book
-getUserById(id: string): any {
+ById(id: string): any {
   const ep = Util.apiPublicUrl('other-user/' + id);
   return this.httpClient.get<Response<User>>(ep).pipe(
       map(res => res.data));
@@ -82,7 +82,7 @@ getAllUsers(): any {
 }
 
 // all user log with bellow service
-login(email: string, password: string, isRemember: boolean): Observable<Response<string>> {
+login(email: string, password: string): Observable<Response<string>> {
   const url = Util.apiPublicUrl('login');
   return this.httpClient.post<Response<string>>(url, {email, password}).pipe(map(res => {
       if (res.data) {
@@ -106,6 +106,11 @@ register(userData: RegisterData): Observable<Response<string>> {
       console.log(err);
       return of({success: false, message: err.toString(), data: null});
   }));
+}
+
+isEmailExists(email: string): Observable<boolean> {
+  const url = Util.apiPublicUrl('email-exists');
+  return this.httpClient.post<Response<boolean>>(url, {email}).pipe(map(res => res.data));
 }
 
 }

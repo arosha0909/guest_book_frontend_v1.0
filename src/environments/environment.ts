@@ -4,9 +4,9 @@
 
 export const environment = {
   production: false,
-  api_url: 'http://localhost:3006',
+  api_url: 'http://localhost:3010',
   app_url: 'http://localhost:4200',
-  home_path: '',
+  home_path: 'http://localhost:4200',
 };
 
 /*

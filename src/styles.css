@@ -10,3 +10,8 @@
     /* border-radius: 12px; */
     /* background: #cfcfcf; */
 }
+
+.error-msg {
+    font-size: 12px;
+    color: red;
+}

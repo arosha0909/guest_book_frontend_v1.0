@@ -1,0 +1,10 @@
+.rounded-circle img{
+    border-radius: 100%;
+    padding: 25px;
+}
+
+.profile-header {
+    padding: 50px;
+    color: #255b54;
+    font-weight: 600;
+}
