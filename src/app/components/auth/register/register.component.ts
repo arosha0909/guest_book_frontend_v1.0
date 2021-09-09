@@ -63,7 +63,6 @@ export class RegisterComponent implements OnInit {
     };
 
     if (this.registrationForm.status !== 'INVALID') {
-      console.log(this.registrationForm.status);
       this.hasError = false;
       this.authService.register(this.formData).subscribe(res => {
           this.getUser();

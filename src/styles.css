@@ -15,3 +15,17 @@
     font-size: 12px;
     color: red;
 }
+
+.btn {
+    border: solid 2px #255b54;
+    color: #255b54;
+    font-weight: 500;
+    transition: all 0.4s ease;
+    margin-top: 55px;
+}
+
+.btn:hover {
+    border: solid 2px #1e4b45;
+    background: #255b54;
+    color: #fff;
+}

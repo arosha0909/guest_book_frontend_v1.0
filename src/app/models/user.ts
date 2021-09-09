@@ -1,7 +1,8 @@
 import { Permission } from '../common/permission';
 import { Role } from '../common/role';
 
-export interface User{
+export interface User {
+    id?: string;
     firstName?: string;
     lastName?: string;
     email: string;

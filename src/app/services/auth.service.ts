@@ -76,7 +76,7 @@ ById(id: string): any {
  // for Admin
 getAllUsers(): any {
   const ep = Util.apiAuthUrl('get-all-guest');
-  return this.httpClient.get<Response<User>>(ep).pipe(
+  return this.httpClient.get<Response<Guest>>(ep).pipe(
       map(res => res.data)
   );
 }
@@ -111,6 +111,15 @@ register(userData: RegisterData): Observable<Response<string>> {
 isEmailExists(email: string): Observable<boolean> {
   const url = Util.apiPublicUrl('email-exists');
   return this.httpClient.post<Response<boolean>>(url, {email}).pipe(map(res => res.data));
+}
+
+updateUser(userData: any): Observable<Response<User>> {
+  const url = Util.apiAuthUrl('update-user');
+  return this.httpClient.post<Response<User>>(url, userData).pipe(
+    tap(res => {
+      this.user = res.data;
+    })
+  );
 }
 
 }

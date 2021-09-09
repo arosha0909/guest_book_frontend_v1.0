@@ -15,12 +15,11 @@
                 </a>
                 <!-- <span class="tooltip">Home</span> -->
             </li>
-            <li>
-                <a *ngIf="user" [routerLink]="'/profile'">
+            <!-- <li>
+                <a *ngIf="user && user.role === Role.SUPER_ADMIN" [routerLink]="'/profile'">
                     <i class='bx bx-book-content' ></i>
                 </a>
-                <!-- <span class="tooltip">Home</span> -->
-            </li>
+            </li> -->
             <li>
                 <a *ngIf="user" [routerLink]="'/profile'">
                     <i class='bx bx-user-circle' ></i>

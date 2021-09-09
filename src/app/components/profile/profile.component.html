@@ -3,7 +3,7 @@
       <h3 class="mb-2">Crafted with <a  target="_blank">Guest Book</a></h3>
       <p>Get in Touch</p>
     </div>
-    <div class="row">
+    <div class="row" *ngIf="!showEdit">
       <div class="col-lg-4 mx-auto">
         <!-- Component -->
         <div class="card shadow">
@@ -16,27 +16,61 @@
             <div class="text-center my-6">
               <!-- Title -->
               <a href="#" class="d-block h5 mb-2" style="font-size: 2vw;
-              color: #255b54;">{{user.firstName}} {{user.lastName}}</a>
+              color: #255b54;" *ngIf="user">{{user.firstName}} {{user.lastName}}</a>
               <!-- Subtitle -->
               <span class="d-block text-sm text-muted mb-4" style="color: #255b54">{{user.email}}</span>
             </div>
             <!-- Stats -->
             <div class="d-flex">
-              <div class="col-4 text-center">
-                <a href="#" class="h4 font-bolder mb-0">25</a>
-                <span class="d-block text-sm">Posts</span>
+              <div class="col-4 text-center ">
+                <a  class="h4 font-bolder mb-0 profile-action" (click)="editProfile()">
+                    <i class='bx bx-edit'></i>
+                </a>
               </div>
-              <div class="col-4 text-center">
-                <a href="#" class="h4 font-bolder mb-0">350</a>
-                <span class="d-block text-sm">Following</span>
+              <div class="col-4 text-center ">
+                <a  class="h4 font-bolder mb-0 profile-action">
+                    <i class='bx bxs-comment-detail' ></i>
+                </a>
               </div>
-              <div class="col-4 text-center">
-                <a href="#" class="h4 font-bolder mb-0">1.5K</a>
-                <span class="d-block text-sm">Followers</span>
+              <div class="col-4 text-center ">
+                <!-- <a href="#" class="h4 font-bolder mb-0">1.5K</a>
+                <span class="d-block text-sm">Followers</span> -->
               </div>
             </div>
           </div>
         </div>
       </div>
     </div>
+
+
+    <div class="row" *ngIf="showEdit">
+        <div class="col-lg-4 mx-auto">
+          <!-- Component -->
+          <div class="card shadow">
+            <div class="card-body">
+                <form [formGroup]="userUpdateForm" novalidate>
+                    <div class="form-group">
+                        <label for="fnameInput">First Name</label>
+                        <input type="text" [(ngModel)]="user.firstName" class="form-control form-control-sm" id="exampleInputfName" aria-describedby="FNameHelp" formControlName="fname">
+                        <span class="error-msg" *ngIf="userUpdateForm.get('fname').hasError('required') && hasError">First Name is required!</span>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputlName">Last Name</label>
+                        <input type="test" [(ngModel)]="user.lastName" class="form-control form-control-sm" id="exampleInputlname" aria-describedby="LNameHelp" formControlName="lname">
+                        <span class="error-msg" *ngIf="userUpdateForm.get('lname').hasError('required')  && hasError">Last Name is required!</span>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Email address</label>
+                        <input type="email" [(ngModel)]="user.email" class="form-control form-control-sm" id="exampleInputEmail1" aria-describedby="emailHelp" formControlName="email">
+                        <span class="error-msg" *ngIf="userUpdateForm.get('email').hasError('required')  && hasError">Email is required!</span>
+                    </div>
+
+    
+                    <button type="submit" class="btn btn-create-account btn-block" (click)="updateUser()">Update Details</button>
+
+                </form>
+            </div>
+          </div>
+        </div>
+      </div>
   </div>

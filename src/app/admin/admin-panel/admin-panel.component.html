@@ -1,1 +1,35 @@
-<p>admin-panel works!</p>
+<div class="row">
+    <div class="col col-lg-4 col-md-4"  *ngFor="let guest of allGuest">
+        <div class="card shadow">
+            <div class="card-body">
+              <div class="d-flex justify-content-center">
+                <a href="#" class="avatar avatar-xl rounded-circle">
+                  <img alt="..." src="https://images.unsplash.com/photo-1579463148228-138296ac3b98?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=3&w=256&h=256&q=80">
+                </a>
+              </div>
+              <div class="text-center my-6">
+                <!-- Title -->
+                <a href="#" class="d-block h5 mb-2" style="font-size: 2vw;
+                color: #255b54;">{{guest.firstName}} {{guest.lastName}}</a>
+                <!-- Subtitle -->
+                <span class="d-block text-sm text-muted mb-4" style="color: #255b54">{{guest.email}}</span>
+              </div>
+              <!-- Stats -->
+              <div class="d-flex">
+                <div class="col-4 text-center">
+                  <a href="#" class="h4 font-bolder mb-0">25</a>
+                  <span class="d-block text-sm">Posts</span>
+                </div>
+                <div class="col-4 text-center">
+                  <a href="#" class="h4 font-bolder mb-0">350</a>
+                  <span class="d-block text-sm">Following</span>
+                </div>
+                <div class="col-4 text-center">
+                  <a href="#" class="h4 font-bolder mb-0">1.5K</a>
+                  <span class="d-block text-sm">Followers</span>
+                </div>
+              </div>
+            </div>
+          </div>
+    </div>
+</div>
