@@ -26,14 +26,9 @@ export class AuthService {
     return localStorage.getItem('token') || sessionStorage.getItem('token');
   }
 
-  private static setToken(token, isRemember): void {
-      if (isRemember) {
+  public static setToken(token): void {
           localStorage.setItem('token', token);
-      } else {
-          sessionStorage.setItem('token', token);
-      }
   }
-
 
   public logout(): void {
     this.invalidate();
@@ -91,7 +86,7 @@ login(email: string, password: string, isRemember: boolean): Observable<Response
   const url = Util.apiPublicUrl('login');
   return this.httpClient.post<Response<string>>(url, {email, password}).pipe(map(res => {
       if (res.data) {
-          AuthService.setToken(res.data, isRemember);
+          AuthService.setToken(res.data);
       }
       return res;
   }), catchError((err, caught) => {
@@ -104,7 +99,7 @@ register(userData: RegisterData): Observable<Response<string>> {
   const url = Util.apiPublicUrl('register');
   return this.httpClient.post<Response<string>>(url, userData).pipe(map(res => {
       if (res.data) {
-          AuthService.setToken(res.data, false);
+          AuthService.setToken(res.data);
       }
       return res;
   }), catchError((err, caught) => {

@@ -1,0 +1,57 @@
+
+.main_content {
+    display: flex;
+    height: 100%;
+    position: relative;
+}
+
+.main_content .main_img {
+    object-fit: cover;
+}
+
+.main_img img{
+    height: 45vw;
+    margin: 35px 25px;
+    border-radius: 12px;
+    position: relative;
+}
+
+.main_desc {
+    margin: 10px 0px;
+    position: relative;
+    padding: 15px 15px;
+    align-items: center;
+}
+
+.main_desc .main_heading {
+    font-size: 5vw;
+    font-weight: 600;
+    color: #285a54;
+}
+
+.main_desc .welcom {
+    font-size: 3vw;
+    font-weight: 500;
+    color: #285a54;
+}
+
+.main_desc .msg {
+    color: #397d75;
+    font-weight: 500;
+}
+
+.btn_start {
+    border: solid 2px #285a54;
+    color: #285a54;
+    font-size: 2.5vw;
+    text-transform: uppercase;
+    font-weight: 600;
+    margin-top: 44px;
+    transition: all 0.4s ease;
+}
+
+.btn_start:hover {
+    border: solid 2px #1e4641;
+    background: #285a54;
+    color: #fff;
+}

@@ -12,7 +12,6 @@ export class CustomInterceptor implements HttpInterceptor {
 
     constructor(
         private router: Router,
-        // private notifierService: NotifierService,
     ) {
     }
 
@@ -31,17 +30,16 @@ export class CustomInterceptor implements HttpInterceptor {
             tap((response: any) => {
                 if (response instanceof HttpResponse) {
                     if (!response.body) {
-                        // this.notifierService.notify('warning', 'Empty Response Received');
+                        // we can add some notify service here...
                     }
                     switch (response.status) {
                         case 200:
                             const res: Response<any> = response.body;
                             if (!res.success) {
                                 if (res.errorCode === 0) {
-                                    // this.notifierService.notify('warning', res.error);
+                                    // we can add some notify service here...
                                 } else {
-                                    // console.log(1, JSON.stringify(res));
-                                    //   this.notifierService.notify('warning', 'Something went wrong.');
+                                    // we can add some notify service here...
                                 }
                             }
                             break;
@@ -49,12 +47,10 @@ export class CustomInterceptor implements HttpInterceptor {
                             break;
                         case 0:
                             console.log(2, JSON.stringify(res));
-                            //   this.notifierService.notify('error', 'Something went wrong.');
                             console.warn('danger', 'Error, Please check logs.');
                             break;
                         default:
                             console.log(3, JSON.stringify(res));
-                            //   this.notifierService.notify('error', 'Something went wrong.');
                             const body: string = String(response.body);
                             console.warn('danger', JSON.parse(body).msg);
                     }
@@ -62,26 +58,23 @@ export class CustomInterceptor implements HttpInterceptor {
             }, response => {
                 switch (response.status) {
                     case 500:
-                        // this.notifierService.notify('error', 'An internal server error occurred');
+                            // we can add some notify service here...
                         break;
                     case 403:
-                        // this.notifierService.notify('error', 'You are not allowed to perform this action! Forbidden.');
+                            // we can add some notify service here...
                         break;
                     case 401:
-                        // this.notifierService.notify('error', 'You are not allowed to perform this action! Unauthorized.');
+                            // we can add some notify service here...
                         break;
                     case 400:
                     case 422:
                         console.log(response.error);
                         const message = 'message' in response.error ? response.error.message : response.error;
-                        // this.notifierService.notify('error', message);
                         break;
                     case 0:
-                        // this.notifierService.notify('error', 'Something went wrong.');
                         console.warn('danger', 'Error, Please check logs.');
                         break;
                     default:
-                        // this.notifierService.notify('error', 'Something went wrong.');
                         console.warn('danger', response);
                 }
             }),

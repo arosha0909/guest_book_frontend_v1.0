@@ -1,0 +1,100 @@
+.base-layout {
+    width: 100%;
+}
+
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100px;
+    background: #255b54;
+    padding: 6px 14px;
+}
+
+.sidebar .logo_content .logo {
+    color: #fff;
+    display: flex;
+    height: 50px;
+    text-align: center;
+    align-items: center;
+}
+
+.logo_content .logo i {
+    font-size: 28px;
+    margin-right: 5px;
+    width: 100%;
+}
+
+.logo_content .logo .logo_name {
+    font-size: 20px;
+    font-weight: 400;
+}
+
+.sidebar ul {
+    margin-top: 40px;
+}
+
+.sidebar ul li {
+    position: relative;
+    height: 50px;
+    width: 100%;
+    margin: 0 0px;
+    line-height: 50px;
+    list-style: none;
+}
+
+.sidebar ul li a {
+    color: #fff;
+    display: flex;
+    align-items: center; 
+    text-decoration: none;
+    border-radius: 12px;
+    transition: all 0.4s ease;
+}
+
+.sidebar ul li a:hover {
+    color: #255b54;
+    background: #fff;
+}
+
+.sidebar ul li a i {
+    height: 50px;
+    min-width: 100%;
+    border-radius: 12px;
+    line-height: 50px;
+    text-align: center;
+    font-size: 20px;
+}
+
+.sidebar .profile_content { 
+    position: absolute;
+    color: #fff;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+}
+
+.sidebar .profile_content .profile {
+    position: relative;
+    padding: 10px 6px;
+    align-items: center;
+    text-align: center;
+}
+
+.sidebar .profile_content .profile i {
+    font-size: 20px;
+    border: white solid 1px;
+    padding: 10px;
+    border-radius: 100%;
+    cursor: pointer;
+}
+
+.content {
+    position: absolute;
+    height: 100%;
+    width: calc(100% - 105px);
+    left: 100px;
+    /* width: 100%; */
+    padding: 10px;
+}
