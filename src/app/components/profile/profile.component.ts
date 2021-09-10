@@ -2,10 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { Form, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Role } from 'src/app/common/role';
+import { Comment } from 'src/app/models/comment';
 import { User } from 'src/app/models/user';
 import { AuthService } from 'src/app/services/auth.service';
-import { LoginComponent } from '../auth/login/login.component';
-import { Guest } from './../../models/guest';
 
 @Component({
   selector: 'app-profile',
@@ -17,8 +16,11 @@ export class ProfileComponent implements OnInit {
   user: User;
   showEdit = false;
   userUpdateForm: FormGroup;
-  formData: Guest;
+  commentForm: FormGroup;
+  formData: any;
   hasError = false;
+  showComment = false;
+  commentFormData: Comment;
 
   constructor(
     private fb: FormBuilder,
@@ -39,10 +41,20 @@ export class ProfileComponent implements OnInit {
       lname: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
     });
+
+    this.commentForm = this.fb.group({
+      title: ['', Validators.required],
+      comment: ['', Validators.required]
+    });
   }
 
   editProfile() {
     this.showEdit = true;
+    this.showComment = false;
+  }
+
+  commentShow() {
+    // this.showComment = true;
   }
 
   updateUser() {
@@ -56,18 +68,22 @@ export class ProfileComponent implements OnInit {
     };
 
     if (this.userUpdateForm.status !== 'INVALID') {
+      this.showEdit = false;
       this.authService.updateUser(this.formData).subscribe(res => {
-        console.log(res.data);
-        if (res.success) {
-          this.showEdit = false;
-        }
+        this.user = res.data;
       });
     } else {
-      
-      console.log('sdsadsd');
       this.hasError = true;
     }
 
+  }
+
+  addComment() {
+    this.commentFormData = {
+      title:  this.commentForm.get('title').value,
+      text: this.commentForm.get('comment').value,
+      isActive: true
+    };
   }
 
 

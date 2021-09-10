@@ -117,7 +117,9 @@ updateUser(userData: any): Observable<Response<User>> {
   const url = Util.apiAuthUrl('update-user');
   return this.httpClient.post<Response<User>>(url, userData).pipe(
     tap(res => {
+      console.log(res);
       this.user = res.data;
+      return res;
     })
   );
 }

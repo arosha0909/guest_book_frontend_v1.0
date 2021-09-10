@@ -14,6 +14,7 @@ export class LoginComponent implements OnInit {
 
   loginForm: FormGroup;
   user: User;
+  errorLogin: any;
 
   constructor(
     private fb: FormBuilder,
@@ -57,6 +58,8 @@ export class LoginComponent implements OnInit {
       this.authService.login(this.loginForm.get('email').value, this.loginForm.get('password').value).subscribe(res => {
         if (res.success) {
           this.authService.getUser().subscribe(user => this.redirectUser(user));
+        } else {
+          this.errorLogin = res;
         }
       });
   }

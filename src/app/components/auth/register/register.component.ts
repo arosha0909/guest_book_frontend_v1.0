@@ -34,7 +34,6 @@ export class RegisterComponent implements OnInit {
       lname: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
       password: ['', Validators.required],
-      // repassword: ['', [Validators.required, confirmPasswordValidation]]
     });
 
     this.formData = {

@@ -7,7 +7,7 @@
       <div class="col-lg-4 mx-auto">
         <!-- Component -->
         <div class="card shadow">
-          <div class="card-body">
+          <div class="card-body"  *ngIf="user">
             <div class="d-flex justify-content-center">
               <a href="#" class="avatar avatar-xl rounded-circle">
                 <img alt="..." src="https://images.unsplash.com/photo-1579463148228-138296ac3b98?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=3&w=256&h=256&q=80">
@@ -28,7 +28,7 @@
                 </a>
               </div>
               <div class="col-4 text-center ">
-                <a  class="h4 font-bolder mb-0 profile-action">
+                <a  class="h4 font-bolder mb-0 profile-action" (click)="commentShow()">
                     <i class='bx bxs-comment-detail' ></i>
                 </a>
               </div>
@@ -46,7 +46,7 @@
     <div class="row" *ngIf="showEdit">
         <div class="col-lg-4 mx-auto">
           <!-- Component -->
-          <div class="card shadow">
+          <div class="card shadow" *ngIf="user">
             <div class="card-body">
                 <form [formGroup]="userUpdateForm" novalidate>
                     <div class="form-group">
@@ -67,6 +67,34 @@
 
     
                     <button type="submit" class="btn btn-create-account btn-block" (click)="updateUser()">Update Details</button>
+
+                </form>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="row" *ngIf="showComment">
+        <div class="col-lg-4 mx-auto">
+          <!-- Component -->
+          <div class="card shadow" *ngIf="user">
+            <div class="card-body">
+                <form [formGroup]="commentForm" novalidate>
+                    <div class="form-group">
+                        <label for="fnameInput">Title</label>
+                        <input type="text" class="form-control form-control-sm" id="exampleInputTtle" aria-describedby="FNameHelp" formControlName="title">
+                        <span class="error-msg" *ngIf="userUpdateForm.get('title').hasError('required') && hasError">Title is required!</span>
+                    </div>
+
+                    <div class="form-group">
+                      <label for="fnameInput">Comment</label>
+                      <textarea type="text" class="form-control form-control-sm" id="exampleInputTtle" aria-describedby="comment" formControlName="comment"></textarea>
+                      <span class="error-msg" *ngIf="userUpdateForm.get('comment').hasError('required') && hasError">Comment is required!</span>
+                    </div>
+
+    
+                    <button type="submit" class="btn btn-create-account btn-block" (click)="addComment()">Add Comment</button>
 
                 </form>
             </div>
